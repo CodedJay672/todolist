@@ -1,6 +1,5 @@
-import { DataGrid, GridRowsProp, GridColDef } from "@mui/x-data-grid";
+import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import Box from '@mui/material/Box';
-import Topbar from "../Topbar/Topbar";
 
 const columns: GridColDef<(typeof rows)[number]>[] = [
   {
