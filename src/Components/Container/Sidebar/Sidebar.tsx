@@ -2,6 +2,7 @@ import CustomButtons from '../../shared/CustomButtons/CustomButtons';
 import styles from './Sidebar.module.scss';
 
 export default function Sidebar() {
+  
   return (
     <div className={styles.sidebar_container}>
       <CustomButtons title="Add Task" icon={'add'} />
