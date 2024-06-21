@@ -16,6 +16,16 @@ const GlobalContext = createContext({
   setShowModal: (showModal: boolean) => {},
   rows: [] as Rows[],
   setRows: (rows: Rows) => {},
+  title: '',
+  setTitle: (title: string) => {},
+  description: '',
+  setDescription: (description: string) => {},
+  dueDate: '',
+  setDueDate: (dueDate: string) => {},
+  labels: [] as string[],
+  setLabels: (labels: string[]) => {},
+  person: {} as {name: string, email: string, phone: string},
+  setPerson: (person: {name: string, email: string, phone: string}) => {},
 });
 
 export default GlobalContext;

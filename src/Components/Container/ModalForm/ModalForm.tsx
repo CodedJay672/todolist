@@ -40,7 +40,6 @@ export default function ModalForm() {
           <textarea name="desc" id="desc" rows={5} className={styles.input_textarea}></textarea>
         </div>
         <div className={styles.button_container}>
-          <button className={styles.action_buttons}>Delete</button>
           <button className={styles.action_buttons}>Save</button>
         </div>
       </form>

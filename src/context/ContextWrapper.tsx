@@ -10,6 +10,16 @@ export default function ContextWrapper({ children }: { children: React.ReactNode
       setShowModal,
       rows: [],
       setRows: () => {},
+      title: '', 
+      setTitle: () => {},
+      description: '',
+      setDescription: () => {},
+      dueDate: '',
+      setDueDate: () => {},
+      labels: [],
+      setLabels: () => {},
+      person: {name: '', email: '', phone: ''},
+      setPerson: () => {},
     }}>
       {children}
     </GlobalContext.Provider>
