@@ -35,9 +35,9 @@ const GlobalContext = createContext({
   setLabels: (labels: Labels[]) => {},
   priority: '' as Priority,
   setPriority: (priority: Priority) => {},
-  savedTasks: {} as Tasks | undefined,
-  setSavedTasks: (savedTasks: Tasks ) => {},
-  dispatchTodoEvents: ({ type, payload}: { type: string, payload: Tasks}) => {}
+  savedTasks: [] as Tasks[],
+  setSavedTasks: (savedTasks: Tasks[] ) => {},
+  dispatchTodoEvents: ({ }: { type: string, payload: Tasks}) => {}
 });
 
 export default GlobalContext;

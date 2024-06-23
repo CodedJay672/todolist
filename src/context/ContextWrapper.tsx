@@ -29,7 +29,7 @@ export default function ContextWrapper({ children }: { children: React.ReactNode
   const [dueDate, setDueDate] = useState<any>(dayjs(startDate));
   const [labels, setLabels] = useState<Labels[]>([]);
   const [priority, setPriority] = useState<Priority>(Priority.LOW);
-  const [ savedTasks, setSavedTasks ] = useState<Tasks>();
+  const [ savedTasks, setSavedTasks ] = useState<Tasks[]>([]);
 
   const [savedTodoObjects, dispatchTodoEvents] = useReducer(todoReducerFunc, [], initFunction);
 

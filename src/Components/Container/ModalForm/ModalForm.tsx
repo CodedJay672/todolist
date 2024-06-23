@@ -38,7 +38,7 @@ export default function ModalForm() {
 
   const handleSubission = (e: any) => {
     e.preventDefault();
-    person = personList.filter((person) => person.name === value || person.name === inputValue);
+    person = personList.filter((person) => person?.name === value || person.name === inputValue);
     setPerson(person);
     
     const taskObject = {
@@ -52,10 +52,10 @@ export default function ModalForm() {
       description
     }
 
-    setSavedTasks(taskObject);
+    setSavedTasks([...savedTasks, taskObject]);
 
     dispatchTodoEvents({ type: 'push', payload: taskObject });
-    console.log(taskObject);
+    console.log(savedTasks);
     setShowModal(false);
   }
 
