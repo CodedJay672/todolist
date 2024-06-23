@@ -5,6 +5,7 @@ export enum Priority {
 }
 
 export type Person = {
+  id: number;
   name: string;
   email: string;
   phone: string;
@@ -16,3 +17,9 @@ export enum Labels {
   NODEJS = 'Nodejs',
   JQUERY = 'Jquery',
 }
+
+export type ToDo = [
+  title: string,
+  label: Labels[],
+  dueDate: Date,
+]

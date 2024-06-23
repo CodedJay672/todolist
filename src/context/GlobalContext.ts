@@ -1,31 +1,42 @@
 import { createContext } from 'react';
+import { Labels, Person, Priority } from '../utils';
+import dayjs from 'dayjs';
 
-type Rows = {
+export type Tasks = {
   id: number,
-  task: {
-    image: string,
-    task: string
-  },
-  labels: string[],
-  dueDate: string
+  title: string,
+  description: string,
+  startDate: Date,
+  dueDate: Date,
+  person: Person[],
+  labels: Labels[],
+  priority: Priority,
 }
 
 
 const GlobalContext = createContext({
   showModal: false,
   setShowModal: (showModal: boolean) => {},
-  rows: [] as Rows[],
-  setRows: (rows: Rows) => {},
+  showPersonModal: false,
+  setShowPersonModal: (personModal: boolean) => {},
+  person: [] as Person[],
+  setPerson: (person: Person[]) => {},
+  value: {} as Person | null,
+  setValue: (value: Person) => {},
+  inputValue: '',
+  setInputValue: (input: string) => {},
   title: '',
   setTitle: (title: string) => {},
+  savedTasks: [] as Person[],
+  setSavedTasks: (savedTasks: Person[]) => {},
   description: '',
   setDescription: (description: string) => {},
-  dueDate: '',
-  setDueDate: (dueDate: string) => {},
-  labels: [] as string[],
-  setLabels: (labels: string[]) => {},
-  person: {} as {name: string, email: string, phone: string},
-  setPerson: (person: {name: string, email: string, phone: string}) => {},
+  dueDate: dayjs(Date.now()),
+  setDueDate: (dueDate: Date) => {},
+  labels: [] as Labels[],
+  setLabels: (labels: Labels[]) => {},
+  priority: '',
+  setPriority: (priority: string) => {}
 });
 
 export default GlobalContext;

@@ -5,16 +5,15 @@ import GlobalContext from "../../../context/GlobalContext";
 import styles from './DataTable.module.scss';
 
 export default function DataTable() {
-  const {rows} = useContext(GlobalContext);
+  const { savedTasks } = useContext(GlobalContext);
 
-  const columns: GridColDef<(typeof rows)[number]>[] = [
+  const columns: GridColDef<(typeof savedTasks)[number]>[] = [
     {
       field: 'task',
       width: 800,
       renderCell: (params) => (
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          <img src={params.row.task.image} alt={`task`} style={{ width: '20px', height: '20px', borderRadius: '50%', marginRight: '10px' }} />
-          {params.row.task.task}
+          {params.value.task}
         </Box>
       ),
     },
@@ -32,9 +31,9 @@ export default function DataTable() {
   return (
     <>
       <Box sx={{ height: '100%', width: '100%', backgroundColor: '#fff', borderRadius: '10px' }}>
-        {rows.length !== 0 ? (
+        {savedTasks.length !== 0 ? (
           <DataGrid
-            rows={rows}
+            rows={savedTasks}
             columns={columns}
             initialState={{
               pagination: {
