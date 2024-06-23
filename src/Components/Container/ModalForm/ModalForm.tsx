@@ -2,7 +2,7 @@ import AutoComplete from '../../shared/CustomAutoComplete/AutoComplete';
 import CustomDropdown from '../../shared/CustomAutoComplete/CustomDropdown/CustomDropdown';
 import styles from './ModalForm.module.scss';
 import { useContext } from 'react';
-import GlobalContext from '../../../context/GlobalContext';
+import GlobalContext, {Tasks} from '../../../context/GlobalContext';
 import { Person } from '../../../utils';
 import dayjs from 'dayjs';
 
@@ -15,13 +15,14 @@ export default function ModalForm() {
     setPerson,
     title,
     setTitle,
-    savedTasks,
-    setSavedTasks,
     description,
     setDescription,
     labels,
     priority,
     dueDate,
+    savedTasks,
+    setSavedTasks,
+    dispatchTodoEvents,
   } = useContext(GlobalContext);
   let person;
 
@@ -41,7 +42,7 @@ export default function ModalForm() {
     setPerson(person);
     
     const taskObject = {
-      id: person[0].id,
+      id: Date.now(),
       title,
       person: person[0],
       labels,
@@ -51,6 +52,9 @@ export default function ModalForm() {
       description
     }
 
+    setSavedTasks(taskObject);
+
+    dispatchTodoEvents({ type: 'push', payload: taskObject });
     console.log(taskObject);
     setShowModal(false);
   }

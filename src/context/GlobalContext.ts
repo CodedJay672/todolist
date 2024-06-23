@@ -6,9 +6,9 @@ export type Tasks = {
   id: number,
   title: string,
   description: string,
-  startDate: Date,
-  dueDate: Date,
-  person: Person[],
+  startDate: number,
+  dueDate: number,
+  person: Person,
   labels: Labels[],
   priority: Priority,
 }
@@ -27,16 +27,18 @@ const GlobalContext = createContext({
   setInputValue: (input: string) => {},
   title: '',
   setTitle: (title: string) => {},
-  savedTasks: [] as Person[],
-  setSavedTasks: (savedTasks: Person[]) => {},
   description: '',
   setDescription: (description: string) => {},
   dueDate: dayjs(Date.now()),
   setDueDate: (dueDate: Date) => {},
   labels: [] as Labels[],
   setLabels: (labels: Labels[]) => {},
-  priority: '',
-  setPriority: (priority: string) => {}
+  priority: '' as Priority,
+  setPriority: (priority: Priority) => {},
+  savedTasks: {} as Tasks | undefined,
+  setSavedTasks: (savedTasks: Tasks ) => {},
+  dispatchTodoEvents: ({ type, payload}: { type: string, payload: Tasks}) => {}
 });
 
 export default GlobalContext;
+

@@ -1,44 +1,43 @@
+import { useState } from "react";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import Box from '@mui/material/Box';
-import { useContext } from "react";
-import GlobalContext from "../../../context/GlobalContext";
 import styles from './DataTable.module.scss';
+import { Tasks } from "../../../context/GlobalContext";
 
-export default function DataTable() {
-  const { savedTasks } = useContext(GlobalContext);
 
-  const columns: GridColDef<(typeof savedTasks)[number]>[] = [
+export default function DataTable({ data }: { data: any[]}) {
+  const columns: GridColDef<(typeof data)[number]>[] = [
     {
-      field: 'task',
-      width: 800,
+      field: 'title',
+      width: 700,
       renderCell: (params) => (
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          {params.value.task}
+          {params.value?.title}
         </Box>
       ),
     },
     {
       field: 'labels',
       type: 'number',
-      width: 110
+      width: 120
     },
     {
       field: 'dueDate',
-      width: 160,
+      width: 200,
     },
   ];
 
   return (
     <>
       <Box sx={{ height: '100%', width: '100%', backgroundColor: '#fff', borderRadius: '10px' }}>
-        {savedTasks.length !== 0 ? (
+        {data.length !== 0 ? (
           <DataGrid
-            rows={savedTasks}
+            rows={data}
             columns={columns}
             initialState={{
               pagination: {
                 paginationModel: {
-                  pageSize: 30,
+                  pageSizeOption: 30,
                 },
               },
             }}
