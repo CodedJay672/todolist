@@ -46,8 +46,8 @@ export default function ModalForm() {
       person: person[0],
       labels,
       priority,
-      startDate: dayjs(Date.now()),
-      dueDate,
+      startDate: dayjs(Date.now()).valueOf(),
+      dueDate: dueDate.valueOf(),
       description
     }
 
