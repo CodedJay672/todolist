@@ -29,3 +29,9 @@ export const initFunction = () => {
   const parsedTodos = storageTodos ? JSON.parse(storageTodos) : [];
   return parsedTodos;
 }
+
+export const initPersonFunc = () => {
+  const storagePeople = localStorage.getItem('savedPersons');
+  const parsedPeople = storagePeople ? JSON.parse(storagePeople) : [];
+  return parsedPeople;
+}

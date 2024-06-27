@@ -12,14 +12,8 @@ export default function PeopleModal() {
     person,
     setPerson,
     setShowPersonModal,
-    dispatchTodoEvents,
+    dispatchPersonEvents,
   } = useContext(GlobalContext);
-
-  const personList: Person[] = [
-    {id: 1, name: 'John Doe', email: 'abc@123.com', phone: '123456789' },
-    {id: 2, name: 'Jane Doe', email: 'abc@123.com', phone: '123456789' },
-    {id: 3, name: 'John Smith', email: 'abc@123.com', phone: '123456789' },
-  ]
 
   const handleClose = () => {
     setShowPersonModal(false);
@@ -35,6 +29,7 @@ export default function PeopleModal() {
     };
 
     setPerson([...person, newPerson]);
+    dispatchPersonEvents({ type: "push", payload: newPerson });
     setShowPersonModal(false);
   }
 

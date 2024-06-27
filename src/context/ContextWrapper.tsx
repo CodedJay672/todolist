@@ -1,9 +1,22 @@
 import { useState, useEffect, useReducer } from "react";
 import GlobalContext, { Tasks } from "./GlobalContext";
-import { Person, Priority, Labels, initFunction } from "../utils";
+import { Person, Priority, Labels, initFunction, initPersonFunc } from "../utils";
 import dayjs from "dayjs";
 
 const todoReducerFunc = (state: Tasks[], { type, payload}: { type: string, payload: Tasks}) => {
+  switch (type) {
+    case 'push':
+      return [...state, payload];
+    case 'update':
+      return state.map((task) => task.id === payload.id ? payload : task);
+    case 'delete':
+      return state.filter((task) => task.id !== payload.id);
+    default:
+      throw new Error()
+  }
+}
+
+const personReducerFunc = ( state: Person[], { type, payload }: { type: string, payload: Person }) => {
   switch (type) {
     case 'push':
       return [...state, payload];
@@ -32,10 +45,15 @@ export default function ContextWrapper({ children }: { children: React.ReactNode
   const [ savedTasks, setSavedTasks ] = useState<Tasks[]>([]);
 
   const [savedTodoObjects, dispatchTodoEvents] = useReducer(todoReducerFunc, [], initFunction);
+  const [savedPersonObjects, dispatchPersonEvents] = useReducer(personReducerFunc, [], initPersonFunc)
 
   useEffect(() => {
     localStorage.setItem('savedTodos', JSON.stringify(savedTodoObjects));
   }, [savedTodoObjects])
+
+  useEffect(() => {
+    localStorage.setItem('savedPersons', JSON.stringify(savedPersonObjects));
+  }, [savedPersonObjects])
 
   return (
     <GlobalContext.Provider value={{
@@ -62,6 +80,7 @@ export default function ContextWrapper({ children }: { children: React.ReactNode
       savedTasks,
       setSavedTasks,
       dispatchTodoEvents,
+      dispatchPersonEvents
     }}>
       {children}
     </GlobalContext.Provider>
