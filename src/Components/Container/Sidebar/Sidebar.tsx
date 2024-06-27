@@ -5,7 +5,7 @@ export default function Sidebar() {
   
   return (
     <div className={styles.sidebar_container}>
-      <CustomButtons title="Add Task" icon={'add'} />
+      <CustomButtons title="Task" icon={'add'} />
       <ul className={styles.navlist}>
         <li>
           <span className={`material-icons-outlined`}>

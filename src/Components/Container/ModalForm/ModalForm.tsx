@@ -2,9 +2,10 @@ import AutoComplete from '../../shared/CustomAutoComplete/AutoComplete';
 import CustomDropdown from '../../shared/CustomAutoComplete/CustomDropdown/CustomDropdown';
 import styles from './ModalForm.module.scss';
 import { useContext } from 'react';
-import GlobalContext, {Tasks} from '../../../context/GlobalContext';
+import GlobalContext from '../../../context/GlobalContext';
 import { Person } from '../../../utils';
 import dayjs from 'dayjs';
+import CustomButtons from '../../shared/CustomButtons/CustomButtons';
 
 
 export default function ModalForm() {
@@ -55,7 +56,6 @@ export default function ModalForm() {
     setSavedTasks([...savedTasks, taskObject]);
 
     dispatchTodoEvents({ type: 'push', payload: taskObject });
-    console.log(savedTasks);
     setShowModal(false);
   }
 
@@ -99,6 +99,7 @@ export default function ModalForm() {
           </textarea>
         </div>
         <div className={styles.button_container}>
+          <CustomButtons title="People" icon={'add'} />
           <button type="submit" className={styles.action_buttons} onClick={handleSubission}>Save</button>
         </div>
       </form>
