@@ -94,22 +94,32 @@ export default function ModalForm() {
           <input
             type="text"
               placeholder='Task Name'
-            {...register('title', { required: true, minLength: 3 })}
+            {...register('title', { required: "This field is required", minLength: {
+              value: 5,
+              message: "Title must be at least 5 characters"
+            }})}
           />
         </div>
-        {errors.title && <span className={styles.errors}>This field is required</span>}
+        {errors.title && <span className={styles.errors}>{errors.title.message}</span>}
 
         <div className={styles.data_section}>
           <AutoComplete data={person} />
-          <div className={`${styles.input_container} ${styles.date_styles}`}>
-            <input
-              type="text"
-              id="date"
-              placeholder='Due Date'
-              {...register('dueDate', { required: true, pattern: /\d{2}-\d{2}-\d{4}/ })}
-            />
-            <span className="material-icons-outlined">calendar_today</span>
+          <div>
+            <div className={`${styles.input_container} ${styles.date_styles}`}>
+              <input
+                type="text"
+                id="date"
+                placeholder='Due Date'
+                {...register('dueDate', { required: "This field is required", pattern: {
+                  value: /\d{2}-\d{2}-\d{4}/,
+                  message: "Date must be in the format dd-mm-yyyy"
+                }})}
+                />
+              <span className="material-icons-outlined">calendar_today</span>
+            </div>
+            {errors.dueDate && <span className={styles.errors}>{errors.dueDate.message}</span>}
           </div>
+
           <CustomDropdown type="priority" />
           <CustomDropdown type="labels" />
         </div>
@@ -120,11 +130,14 @@ export default function ModalForm() {
             rows={5}
             className={styles.input_textarea}
             placeholder='Description'
-            {...register('description', { required: true, minLength: 10 })}
+            {...register('description', { required: "This field is required", minLength: {
+              value: 10,
+              message: "Description must be at least 10 characters"
+            } })}
           >
           </textarea>
         </div>
-        {errors.description && <span className={styles.errors}>This field is required</span>}
+        {errors.description && <span className={styles.errors}>{errors.description.message}</span>}
         
         <div className={styles.button_container}>
           <CustomButtons title="People" icon={'add'} />
