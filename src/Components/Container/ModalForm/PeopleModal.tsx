@@ -29,7 +29,7 @@ export default function PeopleModal() {
     };
 
     setPerson([...person, newPerson]);
-    dispatchPersonEvents({ type: "push", payload: newPerson });
+    console.log(person);
     setShowPersonModal(false);
   }
 

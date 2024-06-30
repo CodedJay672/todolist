@@ -1,36 +1,35 @@
-import { useContext, useId, useState } from 'react'
+import { useContext, useEffect } from 'react'
 import { Priority, Labels } from '../../../../utils';
 import styles from './CustomDropdown.module.scss';
 import GlobalContext from '../../../../context/GlobalContext';
+import Select from 'react-select';
 
 function CustomDropdown({type}: {type: string}) {
   const {
-    labels,
+    setPriority,
     setLabels,
-    priority,
-    setPriority
   } = useContext(GlobalContext);
-  const id = useId();
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (type === 'priority') {;
-      setPriority(e.target.value)
+  const options = type === 'priority' ? Object.values(Priority) : Object.values(Labels);
+  
+  const handleSelect = (selectedOption: any) => {
+    if (type === 'priority') {
+      setPriority(selectedOption.value);
     } else {
+      setLabels(selectedOption.map((option: any) => option.value));
     }
-  }
+  };
 
   return (
     <div className={styles.container}>
-      <input
-        list={id}
-        value={type === 'priority' ? priority : labels}
-        onChange={handleChange}
+      <Select
+        defaultInputValue={type === 'priority' ? Priority.LOW : Labels.CSS}
+        isMulti={type === 'labels' ? true : false}
+        name={type}
+        options={options.map((option) => ({ value: option, label: option }))}
+        className={styles.select}
+        onChange={handleSelect}
       />
-      <datalist id={id}>
-        {Object.values(type === 'priority' ? Priority : Labels).map((value) => (
-          <option key={value} value={value} />
-        ))}
-      </datalist>
     </div>
   )
 }

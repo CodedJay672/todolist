@@ -46,7 +46,7 @@ export default function DataTable({ data }: { data: Tasks[]}) {
               },
             }}
             pageSizeOptions={[5]}
-            // disableRowSelectionOnClick
+            disableRowSelectionOnClick
           />
         ) : (
           <div className={styles.no_tasks}>

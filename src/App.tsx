@@ -5,14 +5,13 @@ import Sidebar from './Components/Container/Sidebar/Sidebar';
 import styles from './styles/App.module.scss';
 import { initFunction } from './utils';
 import { Tasks } from './context/GlobalContext';
-import PeopleModal from './Components/Container/ModalForm/PeopleModal';
 
 function App() {
   const [ tableData, setTableData ] = useState<Tasks[]>(initFunction())
   
-  // useEffect(() => {
-  //   setTableData(initFunction());
-  // }, [tableData]);
+  useEffect(() => {
+    setTableData(initFunction());
+  }, []);
 
   return (
     <div className={styles.container}>

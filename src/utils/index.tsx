@@ -1,3 +1,54 @@
+export const users: Person[] = [
+  {
+    id: 1,
+    name: "John Doe",
+    email: "john.doe@example.com",
+    phone: "+1 555-123-4567"
+  },
+  {
+    id: 2,
+    name: "Jane Smith",
+    email: "jane.smith@example.com",
+    phone: "+1 555-987-6543"
+  },
+  {
+    id: 3,
+    name: "Alex Johnson",
+    email: "alex.johnson@example.com",
+    phone: "+1 555-789-0123"
+  },
+  {
+    id: 4,
+    name: "Emily Brown",
+    email: "emily.brown@example.com",
+    phone: "+1 555-456-7890"
+  },
+  {
+    id: 5,
+    name: "Michael Lee",
+    email: "michael.lee@example.com",
+    phone: "+1 555-234-5678"
+  },
+  {
+    id: 6,
+    name: "Olivia Garcia",
+    email: "olivia.garcia@example.com",
+    phone: "+1 555-345-6789"
+  },
+  {
+    id: 7,
+    name: "William Clark",
+    email: "william.clark@example.com",
+    phone: "+1 555-876-5432"
+  },
+  {
+    id: 8,
+    name: "Sophia Adams",
+    email: "sophia.adams@example.com",
+    phone: "+1 555-432-1098"
+  }
+];
+
 export enum Priority {
   LOW = 'Low',
   MEDIUM = 'Medium',
